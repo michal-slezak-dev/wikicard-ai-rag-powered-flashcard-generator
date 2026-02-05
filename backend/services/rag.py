@@ -62,7 +62,7 @@ class RAGService:
 
         return vector_store
 
-    def generate_flashcards(self, collection_name : str, topic : str = "Create 5 flashcards about this wikipedia page") -> List[Dict[str, str]]:
+    def generate_flashcards(self, collection_name : str, topic : str = "Create 10 flashcards about this wikipedia page") -> List[Dict[str, str]]:
             """Generates our flashcards utilizing RAG
                 Retrieves context from our vectordb and prompts the LLM
             """

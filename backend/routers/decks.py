@@ -48,7 +48,7 @@ def generate_deck(request: GenerateRequest, session: Session = Depends(get_Sessi
         rag_service.index_documents(chunks, collection_name)
         
         # generate
-        generated_cards = rag_service.generate_flashcards(collection_name, topic=f"Create 5 flashcards about {wiki_title}")
+        generated_cards = rag_service.generate_flashcards(collection_name, topic=f"Create 10 flashcards about {wiki_title}")
         
         # save our flashcard to db
         created_cards = []
