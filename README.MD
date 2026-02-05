@@ -1,57 +1,58 @@
-# WikiCard AI – Generator Fiszek z Wikipedii
-**Projekt zaliczeniowy z przedmiotu Programowanie w Językach Funkcyjnych (PJF)**  
-**Autor:** Michał Ślęzak, WCY23IJ2S1, nr albumu 860 65  
-**Prowadzący laboratorium:** mgr inż. Piotr Bączyk  
+# WikiCard AI – RAG-Powered Flashcard Generator
+**Final Project for Functional Programming Languages (PJF)**  
+**Author:** Michał Ślęzak, WCY23IJ2S1, nr albumu 860 65  
+**Lab Instructor:** mgr inż. Piotr Bączyk  
 
-WikiCard AI to aplikacja generująca fiszki edukacyjne na podstawie stron z Wikipedii. Wykorzystuje **RAG (Retrieval-Augmented Generation)** do wyszukiwania kluczowych fragmentów tekstu i tworzenia merytorycznych fiszek. Dodatkowy algorytm **SM-2** optymalizuje proces nauki poprzez rozłożone powtórki - oblicza optymalny interwał między sesjami.
+WikiCard AI is an application that generates educational flashcards based on Wikipedia pages. It utilizes RAG (Retrieval-Augmented Generation) to retrieve key text fragments and create high-quality flashcards. Additionally, the SM-2 algorithm optimizes the learning process through spaced repetition by calculating the optimal interval between review sessions.
 
 ---
-## Funkcjonalności
-- **Pipeline RAG:** Automatyczne pobieranie treści ze strony Wikipedii po wklejeniu URL, chunking, indeksowanie do ChromaDB i generowanie fiszek przez model LLM.
-- **Baza wektorowa:** ChromaDB do semantycznego wyszukiwania kontekstu.
-- **Trwałe przechowywanie:** SQLite do zapisywania decku fiszek, stanu nauki oraz możliwość usunięcia danego decku fiszek.
-- **System powtórek SM-2:** Oblicza interwały i ease factor na podstawie oceny danej fiszki przez użytkownika.
+## Features
+- **RAG Pipeline:** Automated content extraction from Wikipedia URLs, chunking, indexing into ChromaDB, and flashcard generation via an LLM.
+- **Vector Database:** ChromaDB for semantic context retrieval.
+- **Persistent Storage:** SQLite for saving flashcard decks, tracking learning progress, and managing decks (deletion).
+- **SM-2 Repetition System:** Calculates review intervals and the ease factor based on the user's rating of a specific flashcard.
 ---
 
-## Stos technologiczny
-| Kategoria | Technologie |
+## Tech Stack
+| Category | Technologies |
 |-----------|-------------|
-| **Język** | Python 3.13.9 |
+| **Language** | Python 3.13.9 |
 | **Backend** | FastAPI |
 | **Frontend** | Streamlit |
 | **AI** | LangChain, Meta Llama 3.1 (Ollama) |
-| **Wektorowa baza danych** | ChromaDB |
-| **Baza danych** | SQLite |
+| **Vector Database** | ChromaDB |
+| **Database** | SQLite |
 ---
 
-## Działanie
-### Pipeline RAG
-1. **Ingestion:** Pobieranie HTML z Wikipedii.
-2. **Indexing:** Podział na chunki, wektoryzacja.
-3. **Storage:** Zapis do ChromaDB.
-4. **Retrieval + Generation:** Wyszukiwanie podobnych chunków i generowanie fiszek do formatu JSON przez model Llama 3.1.
+## How it works
+### RAG Pipeline
+1. **Ingestion:** Extracting HTML content from Wikipedia.
+2. **Indexing:**Splitting text into chunks and vectorization.
+3. **Storage:** Saving embeddings to ChromaDB.
+4. **Retrieval + Generation:** Searching for similar chunks and generating flashcards in JSON format using the Llama 3.1 model.
 
-### Algorytm SM-2
-Na podstawie oceny fiszki aktualizuje:
+### SM-2 Algorithm
+Updates the following metrics based on the user's flashcard rating:
 - **Easiness Factor (EF)**
-- **Interval** (dni do powtórki)
-- **Repetitions** (licznik sukcesów)
+- **Interval** (days until next review)
+- **Repetitions** (success counter)
 ---
 
 ## Uruchomienie
-### Wymagania
+### Prerequisites
 - Ollama z modelem: `ollama pull llama3.1`
 - Python 3.13.9+
 
-### Instalacja 
+### Getting Started
 ```bash
-git clone https://github.com/michal-slezak-dev/generowanie-fiszek-rag.git
-cd generowanie-fiszek-rag
-pip install -r requirements.txt
+git clone https://github.com/michal-slezak-dev/wikicard-ai-rag-powered-flashcard-generator.git
+cd wikicard-ai-rag-powered-flashcard-generator
+conda env create -f environment.yml
+conda activate rag-flashcard-generation-env
 ```
 
 ### Start
-Wykonujemy te komendy z folderu głównego generowanie-fiszek-rag poprzez dwa terminale.
+Run the following commands from the project's root directory wikicard-ai-rag-powered-flashcard-generator using two separate terminals.
 
 Terminal 1 - backend:
 ```bash

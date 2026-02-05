@@ -1,0 +1,11 @@
+name: rag-flashcard-generation-env
+channels:
+  - defaults
+dependencies:
+  - python=3.13.9
+  - pydantic
+  - langchain-community
+  - pip
+  - pip:
+    - -r requirements.txt
+prefix: C:\Users\sleza\.conda\envs\rag-flashcard-generation-env
