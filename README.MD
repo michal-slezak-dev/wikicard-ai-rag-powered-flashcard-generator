@@ -39,9 +39,32 @@ Updates the following metrics based on the user's flashcard rating:
 - **Repetitions** (success counter)
 ---
 
-## Uruchomienie
+## Installation & Setup
+
+### Option 1: Docker (Recommended)
+This is the easiest way to run the application with all dependencies pre-configured.
+
+**Prerequisites:**
+- Docker Desktop (or Docker Engine + Docker Compose)
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/michal-slezak-dev/wikicard-ai-rag-powered-flashcard-generator.git](https://github.com/michal-slezak-dev/wikicard-ai-rag-powered-flashcard-generator.git)
+   cd wikicard-ai-rag-powered-flashcard-generator
+
+2. **Build and Start Services: Run the following command in the project root:**
+   ```bash
+   docker-compose up -d --build
+
+3. **Download AI Models: The Ollama container starts empty. You must pull the LLM and embedding models manually once the container is running:**
+   ```bash
+   docker exec -it ollama ollama pull llama3.1
+
+### Option 2: Local Development (Conda environment)
+If you prefer running without Docker.
+
 ### Prerequisites
-- Ollama z modelem: `ollama pull llama3.1`
+- Ollama with llama3.1: `ollama pull llama3.1`
 - Python 3.13.9+
 
 ### Getting Started
