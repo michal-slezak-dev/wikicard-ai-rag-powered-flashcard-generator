@@ -28,7 +28,7 @@ WikiCard AI is an application that generates educational flashcards based on Wik
 ## How it works
 ### RAG Pipeline
 1. **Ingestion:** Extracting HTML content from Wikipedia.
-2. **Indexing:**Splitting text into chunks and vectorization.
+2. **Indexing:** Splitting text into chunks and vectorization.
 3. **Storage:** Saving embeddings to ChromaDB.
 4. **Retrieval + Generation:** Searching for similar chunks and generating flashcards in JSON format using the Llama 3.1 model.
 
