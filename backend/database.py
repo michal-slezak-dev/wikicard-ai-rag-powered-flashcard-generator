@@ -1,9 +1,13 @@
 from sqlmodel import SQLModel, create_engine, Session
 from sqlalchemy import event
 from sqlalchemy.engine import Engine
+import os
+# sqlite_file_name = "database.db"
+# sqlite_url = f"sqlite:///{sqlite_file_name}"
 
+data_dir = "data" if os.path.exists("data") else "."
 sqlite_file_name = "database.db"
-sqlite_url = f"sqlite:///{sqlite_file_name}"
+sqlite_url = f"sqlite:///{os.path.join(data_dir, sqlite_file_name)}"
 
 connect_args = {"check_same_thread": False} # allows multiple threads to access the db at the time
 engine = create_engine(sqlite_url, connect_args=connect_args)

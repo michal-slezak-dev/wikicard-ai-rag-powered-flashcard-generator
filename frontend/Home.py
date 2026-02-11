@@ -1,8 +1,11 @@
 import streamlit as st
 from typing import Tuple, List, Dict, Any
 import httpx
+import os
 
-API_URL = "http://127.0.0.1:8000"
+# API_URL = "http://0.0.0.0:8000"
+API_URL = os.getenv("BACKEND_URL", "http://0.0.0.0:8000")
+
 st.set_page_config(page_title="RAG Flashcards", layout="wide")
 
 def fetch_decks_and_due_count() -> Tuple[List[Dict[str, Any]], int]:
@@ -54,7 +57,7 @@ st.markdown("""
 
 col_logo, col_text = st.columns([2, 2], vertical_alignment="center")
 with col_logo:
-    st.image("frontend/sources/godlo_wat_z_nazwa_angielska.png", width="stretch")
+    st.image("sources/godlo_wat_z_nazwa_angielska.png", width="stretch")
 
 with col_text:
     st.title("WikiCard AI", text_alignment="center")

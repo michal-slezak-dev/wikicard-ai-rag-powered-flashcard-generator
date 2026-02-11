@@ -1,8 +1,11 @@
 import streamlit as st
 import httpx
 import pandas as pd
+import os
 
-API_URL = "http://127.0.0.1:8000"
+# API_URL = "http://0.0.0.0:8000"
+API_URL = os.getenv("BACKEND_URL", "http://0.0.0.0:8000")
+
 st.set_page_config(page_title="Generate Deck from Wikipedia", layout="wide")
 
 def generate_deck():

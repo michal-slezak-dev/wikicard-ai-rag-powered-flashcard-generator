@@ -1,7 +1,10 @@
 import streamlit as st
 import httpx
+import os
 
-API_URL = "http://127.0.0.1:8000"
+# API_URL = "http://0.0.0.0:8000"
+API_URL = os.getenv("BACKEND_URL", "http://0.0.0.0:8000")
+
 st.set_page_config(page_title="Study Session", layout="centered")
 
 def fetch_study_queue():
