@@ -1,8 +1,10 @@
 import streamlit as st
 from typing import List, Dict, Any
 import httpx
+import os
 
-API_URL = "http://127.0.0.1:8000"
+API_URL = "http://0.0.0.0:8000"
+API_URL = os.getenv("BACKEND_URL", "http://0.0.0.0:8000")
 
 def next_card():
     if st.session_state.current_card_index < len(st.session_state.cards) - 1:
