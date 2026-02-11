@@ -1,0 +1,55 @@
+services:
+
+  backend:
+    build: ./backend
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - sqlite_data:/app/data
+    depends_on:
+      - chroma
+      - ollama
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - CHROMA_HOST=http://chroma:8000
+
+  frontend:
+    build: ./frontend
+    container_name: streamlit_app
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    environment:
+      - BACKEND_URL=http://backend:8000
+
+  chroma:
+    image: chromadb/chroma:latest
+    container_name: chroma_db
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma_data:/chroma
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+volumes:
+  sqlite_data:
+  chroma_data:
+  ollama_data:
