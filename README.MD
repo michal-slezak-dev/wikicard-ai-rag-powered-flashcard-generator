@@ -22,6 +22,7 @@ WikiCard AI is an application that generates educational flashcards based on Wik
 | **AI** | LangChain, Meta Llama 3.1 (Ollama) |
 | **Vector Database** | ChromaDB |
 | **Database** | SQLite |
+| **Containerization** | Docker |
 ---
 
 ## How it works
