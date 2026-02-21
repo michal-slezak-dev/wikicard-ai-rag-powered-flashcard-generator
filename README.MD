@@ -49,12 +49,17 @@ This is the easiest way to run the application with all dependencies pre-configu
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/michal-slezak-dev/wikicard-ai-rag-powered-flashcard-generator.git](https://github.com/michal-slezak-dev/wikicard-ai-rag-powered-flashcard-generator.git)
+   git clone https://github.com/michal-slezak-dev/wikicard-ai-rag-powered-flashcard-generator.git
    cd wikicard-ai-rag-powered-flashcard-generator
 
 2. **Build and Start Services: Run the following command in the project root:**
    ```bash
    docker-compose up -d --build
+
+2a. **If you already have it installed, run the follwing command:**
+   ```bash
+   docker-compose -f docker-compose.yml up
+   ```
 
 3. **Download AI Models: The Ollama container starts empty. You must pull the LLM and embedding models manually once the container is running:**
    ```bash
