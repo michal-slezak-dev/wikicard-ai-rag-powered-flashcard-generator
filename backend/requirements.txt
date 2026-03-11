@@ -75,9 +75,6 @@ MarkupSafe
 marshmallow
 matplotlib-inline
 mdurl
-mkl_fft
-mkl_random
-mkl-service
 mmh3
 mpmath
 multidict
